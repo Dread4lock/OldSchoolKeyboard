@@ -1,8 +1,9 @@
 ﻿using System.Text;
 
-var a = OldPhonePad(Console.ReadLine());
-Console.WriteLine(a);
-Console.ReadLine();
+Console.WriteLine("Enter number");
+var userInput = Console.ReadLine();
+Console.WriteLine(OldPhonePad(userInput));
+Console.ReadKey();
 
 static string OldPhonePad(string input)
 {  
@@ -57,6 +58,12 @@ static string OldPhonePad(string input)
             lastKey = key;
             pressCount = 1;   
         }
+    }
+
+    if (lastKey != ' ')
+    {
+        string letters = keypad[lastKey];
+        result.Append(letters[(pressCount - 1) % letters.Length]);
     }
     return result.ToString();
 }
